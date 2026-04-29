@@ -33,8 +33,10 @@ Details: RAR 5
 ----------- ---------  ---------- -----  ----
                101442                    1
 ```
-```
 3.パスワード抽出
+
+重要：flag.png は RAR のパスワードが必要
+- password.txtの復元
 ```bash
 sudo icat -o 32768 diskimage.raw.001 71 > password.txt
 ```
@@ -52,9 +54,11 @@ cat password.txt
 #
 The password is password
 ```
+
 ```bash
 unrar password flag.rar
 ```
+- RARを展開
 ```bash
 unrar x flag.rar
 
