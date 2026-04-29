@@ -1,6 +1,7 @@
 ### 使用OS：Kali
 
-![foEX10_1](images/foEX10_1)
+![foEX10_1](images/foEX10_1.png)
+
 **Registry.zip（オフラインのレジストリ）から “ドメインユーザ himura のパスワード” を特定する 系で、だいたい下のどれかに入ってる。**
 
 - 自動ログオン（AutoLogon） の平文パスワード（当たり枠）
@@ -8,6 +9,7 @@
 - LSA Secrets（環境によっては平文/鍵素材が出る）
 
 1.Registry.zipをダウンロードして展開する
+
 ![foEX10_2](images/foEX10_2.png)
 - 中身のファイルは３つ
 
