@@ -83,4 +83,4 @@ All OK
 ```bash
 xdg-open flag.png
 ```
-![fo200_2](images/fo200_2.png)
+![fo200_2](images/foo200_2.png)
