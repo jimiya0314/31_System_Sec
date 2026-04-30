@@ -1,5 +1,7 @@
 ### 使用OS：Kali
 
+※AI解説多め
+
 フラグをさがせ
 1.memdump.raw.zipをダウンロード
 2.検索（中身を確認する）
@@ -7,18 +9,18 @@
 strings memdump raw | grep -i "flag"
 ```
 - 莫大な文字がヒットして出力された
-![foex20_1](images/foex20_1)
+![foex20_1](images/foex20_1.png)
 
 3.正規表現を使ってさらに細かく検索する
 ```bash
 strings memdump.raw | grep -E '[a-zA-Z0-9_]{3,10}\{[a-zA-Z0-9_!?-]{5,50}\}'
 ```
-![foex20_2](images/foex20_2)
+![foex20_2](images/foex20_2.png)
 
 - **Windowsのシステム固有のID（GUID/UUID）**や、ファイルパス、レジストリキーなどが大量に引っかかっていますね。これらは典型的な「ノイズ」です。
 下記ノイズを削除しようと試みるも・・・
 
-![foex20_3](images/foex20_3)
+![foex20_3](images/foex20_3.png)
 
 ```bash
 strings memdump.raw | grep -E 'GBI\{[a-zA-Z0-9_!?-]+\}'
@@ -27,14 +29,15 @@ strings memdump.raw | grep -E 'GBI\{[a-zA-Z0-9_!?-]+\}'
 ```bash
 strings -a memdump.raw | grep "59fb30"
 ```
-![foex20_4](images/foex20_4)
+![foex20_4](images/foex20_4.png)
 
 ノイズを消して検索（Unicode検索）
 { を含めて検索し、-i（大文字小文字無視）を外すことで、FlagBit などを除外します。
 ```bash
 strings -e l memdump.raw | grep "GBI{"
 ```
-![foex20_5](images/foex20_5)
+![foex20_5](images/foex20_5.png)
+
 断片は見つかっていますね（GBI{59fb30...）。 これは、メモリ上のデータが途切れているか、「エンコーディング（文字コード）」が合っていない可能性が高いです。
 -e l は Windows 系の Unicode (16-bit) を探すオプションですが、完全なフラグは通常の ASCII (8-bit) で保存されていることが多いです。
 
